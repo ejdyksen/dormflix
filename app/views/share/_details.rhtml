@@ -1,0 +1,4 @@
+<h1><img class="movie_cover" src="<%= @movie.image_url_medium %>" alt="<%= @movie.title %>" /><%= @movie.title %></h1>
+<p><strong>Rating:</strong> <%= @movie.mpaa_rating %></p>
+<h2>Who has this movie?</h2>
+<%= render(:partial => "shared/movie_items_by_user", :collection => @movie.users) %>`

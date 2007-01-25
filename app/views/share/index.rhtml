@@ -1,0 +1,16 @@
+<h1>Share movies</h1>
+<p>Search our database for movies you would like to share. <%= link_to "Don't see your movie listed here?", :action => "add" %></p>
+<% form_tag('javascript:void(0)') do %>
+<p><%= text_field_tag "search", @search %></p>
+<%= observe_field :search,                      
+                  :frequency => 3,            
+                  :before    => "Element.show('spinner');Element.hide('movie_list')",  
+                  :complete  => "Element.hide('spinner');Element.show('movie_list')",  
+                  :update    => "movie_list", 
+                  :url       => {:action => "add_search", :only_path => false},  
+                  :with      => "'search=' + encodeURIComponent(value)" %> 
+<% end %>
+
+<%= image_tag "loading.gif", :id => "spinner", :style => "display: none; margin: 100px 0px 0px 300px;" %>
+<div id="movie_list">
+</div>

@@ -1,0 +1,7 @@
+<% if @verified %>
+<h1>Welcome to dormflix!</h1>
+<p>Your account has been verified. Perhaps you'd like to <%= link_to "share a movie", :controller => "share" %>?</p>
+<% else %>
+<h1>Verification status</h1>
+<%= @message %>
+<% end %>

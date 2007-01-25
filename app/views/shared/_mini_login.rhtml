@@ -1,0 +1,18 @@
+<% if first_name %>
+<div id="loggedin">           
+<p>Hello, <%= first_name %>!</p>
+<p><%= link_to "Logout", :controller => "home", :action => "logout" %></p>
+</div>
+<% else %>
+<div id="login">
+<% form_tag(:controller => "home", :action => "login") do %>
+<p>Please login or <%= link_to "register", :controller => "register", :action => "index" %></p>
+<p>
+<label for="email">Email</label>
+<%= text_field_tag :email, params[:email] %><br />
+<label for="password">Password</label>
+<%= password_field_tag :password %><br />
+<%= submit_tag "Login" %>
+</p>
+<% end %>
+</div><% end %>

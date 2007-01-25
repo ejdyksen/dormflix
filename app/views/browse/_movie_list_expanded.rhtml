@@ -1,0 +1,29 @@
+<div id="movie_expanded_<%= movie_list_expanded.id %>" class="movie_list_sub" style="display: none;">
+<div style="float: right;">
+<%= link_to_remote "(close)", :update => "movie_expanded_" + movie_list_expanded.id.to_s, 
+                              :before => visual_effect(:blind_up, "movie_expanded_" + movie_list_expanded.id.to_s),
+                              :complete => visual_effect(:blind_down, "movie_collapsed_" + movie_list_expanded.id.to_s), 
+                              :url => {:controller => "browse", :action => "collapse", :id => movie_list_expanded.id},
+                              :position => "before" %></div>
+<h1><img class="movie_cover" src="<%= movie_list_expanded.image_url_medium %>" alt="<%= movie_list_expanded.title %>" /><%= movie_list_expanded.title %></h1>
+<% unless movie_list_expanded.directors.nil? %>
+<% i = 1 %>
+<p><strong>Directed by:</strong> <% movie_list_expanded.directors.each do |director| %>
+<%= director %><%= ", " unless (i == movie_list_expanded.directors.size) %><% i += 1; end %></p>
+<% end %>
+<% unless movie_list_expanded.theatrical_release_date.nil? %>
+<p><strong>Theatrical release:</strong> <%= movie_list_expanded.theatrical_release_date.year %></p>
+<% end %>
+<% unless movie_list_expanded.mpaa_rating.nil? %>
+<p><strong>Rated:</strong> <%= movie_list_expanded.mpaa_rating %></p>
+<% end %>
+<% unless movie_list_expanded.description.nil? %>
+<p><strong>Description:</strong> <%= movie_list_expanded.description %></p>
+<% end %>
+<h3>Who has this DVD?</h3>
+<ul>
+<% movie_list_expanded.users.each do |user| %>
+<li><%= link_to user.full_name, :action => "details", :controller => "users", :id => user.id %></li>
+<% end %>
+</ul>
+</div>

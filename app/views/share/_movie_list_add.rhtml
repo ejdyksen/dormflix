@@ -1,0 +1,9 @@
+<% unless movie_list_add.nil? %>
+<div class="movie_list">
+<img src="<%= movie_list_add.image_url_small %>" alt="<%= movie_list_add.title %>" />
+<h2><%= movie_list_add.title %></h2>
+<p><%= link_to "I own that!", :action => "add", :id => movie_list_add.id %></p>
+</div>
+<% else %>
+<p>That movie doesn't appear to be in our database.  Try searching <%= link_to "here", :action => "add" %>.</p>
+<% end %>

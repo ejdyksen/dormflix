@@ -1,0 +1,205 @@
+/*  
+Theme Name: Ginger Ninja! v2
+Description: The new Ginger Ninja! theme.
+Version: 1.0
+Author: Donny Burnside
+Author URI: http://www.ginger-ninja.net/
+*/
+
+/* Generic Styling */
+
+* {
+	margin: 0px;
+}
+
+body {
+	background: url(/images/bg-body.png) repeat-x top center #E8F7F9;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 10pt; /* Root text size */
+}
+
+#wrapper {
+	margin: 0px auto;
+	width: 700px;
+	background: #FFFFFF;
+}
+
+#header {
+	height:116px;
+	background:url(/images/header.png) no-repeat;
+}
+	
+/* Menu */
+
+#menu {
+	height:35px;
+	line-height:35px;
+	background:url(/images/bg-menu.png) repeat-x;
+}
+
+a {
+	text-decoration:none;
+	color:#B4C835;
+}
+a:hover {
+	text-decoration:none;
+	color:#6CC7DC;
+}
+
+
+#menu ul {
+	list-style-type:none;
+}
+
+#menu li {
+	float:left;
+}
+	
+#menu li a {
+	padding:0 15px;
+	display:block;
+  font-size: 13px;
+  font-weight: bold;
+	color:#ffffff;
+	margin-right:2px;
+	width: 40px;
+	text-align: center;
+}
+
+#menu li a:hover {
+	background:url(/images/bg-menu-hover.png) no-repeat center center;
+}
+
+/* Login */
+
+#login, #loggedin {
+	float: right;
+	margin: 25px 8px;
+  font-size: 14px;
+	color: #EAFAFD;
+	text-align: right;
+	font-family: "Arial Rounded MT Bold", Tahoma, Verdana, Arial, sans-serif;
+}
+
+#loggedin {
+	margin: 7px 8px;
+}
+
+#login a, #loggedin a {
+	color: #00AFCE;
+	text-decoration: underline;
+}
+
+#login a:hover, #loggedin a:hover {
+	color: #00AFCE;
+	text-decoration: none;
+}
+
+#login input {
+	background-image: url(/images/input_bg.gif);
+	background-repeat: no-repeat;
+	border: 1px solid #BEBEBE;
+	
+	padding: 5px;
+	margin-top: 9px;
+	margin-left: 4px;
+	font-size: 12px;
+	font-family: Tahoma, Verdana, Arial, sans-serif;
+}
+
+/* Content */
+
+#content {
+	padding: 15px;
+	min-height:500px;
+}
+
+#content p {
+  font-size: 1em;
+  margin-bottom: 0.2em;
+}
+
+#content h1 {
+  font-size: 1.8em;
+  margin-bottom: 0.3em;
+}
+#content h2 {
+  margin-top: 0.7em;
+  font-size: 1.5em;
+}
+#content h3 {   
+  margin-top: 0.5em;
+  font-size: 1.2em;
+}
+
+#notice p {
+  border: 1px dotted #333333;
+  background-color:#EAEAEA;
+  padding: 4px;
+  color: green;
+  font-size: 1.6em;
+  margin-bottom: 15px;
+}
+
+#footer {
+	clear:both;
+	height:100px;
+	background:url(/images/bg-footer.jpg) no-repeat;
+}
+
+/* movie_list */
+div.movie_list {
+  padding: 5px;
+  border: 1px solid black;
+  margin-top: 5px;
+  overflow: auto;
+}
+
+div.movie_list:hover {
+  background-color: #EEE;
+}
+
+div.movie_list_sub {
+     clear: both;
+  overflow: auto;
+}
+
+div.movie_list img, div.movie_list_sub img {
+  padding: 5px;
+  float: left;
+}
+
+h2.movie_list_sub {
+  overflow: auto;
+  font-size: 1em;
+  vertical-align: middle;
+}
+
+
+/* Footer */
+
+#footer-valid {
+	float:left;
+	padding-top:55px;
+	padding-left:20px;
+	cursor:default;
+	color:#ffffff;
+  margin-bottom: 300px;
+}
+#footer-valid a {
+	color:#ffffff;
+	text-decoration:none;
+}
+#footer-valid a:hover {
+	color:#ffffff;
+	text-decoration:underline;
+}
+
+/* Ads? */
+
+#ad-top {
+	width:480px;
+	height:72px;
+	background:url(/images/bg-ad-top.png) no-repeat;
+	padding:5px;
+}

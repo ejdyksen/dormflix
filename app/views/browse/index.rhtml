@@ -1,0 +1,21 @@
+<% form_tag('javascript:void(0)') do %>
+
+<h1>Browse Movies</h1>
+<p>Search here: <%= text_field_tag "search", @search %>
+<%= link_to_remote "list" , :update => "movie_browser", :url => {:action => "search", :type => "list" }, :with => "'search='+$F('search')" %> |
+<%= link_to_remote "table", :update => "movie_browser", :url => {:action => "search", :type => "table"}, :with => "'search='+$F('search')" %>
+<%= observe_field :search,                      
+                  :frequency => 1,            
+                  :before    => "Element.show('spinner');Element.hide('movie_browser')",
+                  :complete  => {"Element.hide('spinner');", visual_effect(:blind_down, 'movie_browser') },
+                  :update    => "movie_browser", 
+                  :url       => {:action => "search", :only_path => false},  
+                  :with      => "'search=' + encodeURIComponent(value)"
+%> 
+
+<% end %>
+</p>
+<%= image_tag "loading.gif", :id => "spinner", :style => "display: none; margin: 100px 0px 0px 300px;" %>
+<div id="movie_browser">
+<%= render :partial=>"movie_list", :collection => @movies %>
+</div>

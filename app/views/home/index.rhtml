@@ -1,0 +1,39 @@
+<% if @user %>
+<h1>Welcome back, <%= @user.first_name %></h1>
+<h3>Current outgoing requests...</h3>
+<% unless @user.requests.empty? %><ul>
+<% @user.requests.each do |request| %>
+<li id="request_<%= request.id %>">You are borrowing <%= request.movie_item.movie.title %> from <%= request.movie_item.user.full_name %>
+<%= link_to_remote "(X)",
+    :complete => visual_effect(:blind_up, "request_" + request.id.to_s),
+    :url => {:controller => "borrow", :action => "remove", :id => request.id} %></li>
+<% end %></ul>
+<% else %>
+<p><em>You envy no man, and you request no movies.</em></p>
+<% end %>
+<h3>Current incoming requests...</h3>
+<% unless @requests_in.empty? %><ul>
+<% @requests_in.each do |request| %>
+<li id="inrequest_<%= request.id %>"><%= request.user.full_name %> wants to borrow <%= request.movie_item.movie.title %>.<%= link_to_remote "(X)",
+                                                    :complete => visual_effect(:blind_up, "inrequest_" + request.id.to_s),
+                                                    :url => {:controller => "borrow", :action => "remove", :id => request.id} %></li>
+<% end %></ul>
+<% else  %>
+<p><em>Nobody wants your crappy movies.</em></p>
+<% end %>
+
+<h3>You are currently sharing...</h3>
+<% unless @user.movies.empty? %><ul>
+<% @user.movies.each do |movie| %>
+<li id="movie_<%= movie.id.to_s %>"><%= movie.title %> <%= link_to_remote "(X)",
+                                                    :complete => visual_effect(:blind_up, "movie_" + movie.id.to_s),
+                                                    :url => {:controller => "share", :action => "remove", :movie_id => movie.id, :user_id => @user.id}
+%></li>
+<% end %></ul><%= link_to "Share more movies", :controller => "share" %>
+<% else %>
+<p>You bum. <%= link_to "Share", :controller => "share" %> some movies! It's the only way the dormflix community can grow.</p>
+<% end %>
+<% else %>
+<h1>Welcome to dormflix!</h1>
+<p>dormflix is a place where you can share movies with your friends! <%= link_to "Register", :controller => "register" %> today!</p>
+<% end %>

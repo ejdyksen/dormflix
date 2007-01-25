@@ -1,0 +1,9 @@
+<% unless movie_list_amazon.nil? %>
+<div class="movie_list">
+<img src="<%= movie_list_amazon.image_url_small %>" alt="<%= movie_list_amazon.title %>" />
+<h2><%= movie_list_amazon.product_name %></h2>
+<p><%= link_to "I own that!", :action => "add", :asin => movie_list_amazon.asin %></p>
+</div>
+<% else %>
+<p>No results <%= @debug %></p>
+<% end %>

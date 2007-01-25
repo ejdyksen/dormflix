@@ -1,0 +1,12 @@
+<% i = 0; cols = 3 %>
+<table width="100%">
+<% movie_table.each do |movie| %>
+<% case i.modulo(cols); when 0 %>
+<tr><td><%= render(:partial => "movie_cell", :object => movie) %></td>
+<% when (cols - 1) %>
+<td><%= render(:partial => "movie_cell", :object => movie) %></td></tr>
+<% else %>
+<td><%= render(:partial => "movie_cell", :object => movie) %></td>
+<% end; i += 1 %>
+<% end %>
+</table>

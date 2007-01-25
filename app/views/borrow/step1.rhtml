@@ -1,0 +1,4 @@
+<p>The following people own <strong><%= @movie.title %></strong>:</p>
+<% @movie.movie_items.each do |movie_item| %>
+<p><%= movie_item.user.full_name %> (<%= movie_item.user.email %>) - <%= link_to "Borrow this movie from " + movie_item.user.first_name, :action => "step2", :id => movie_item.id %></p>
+<% end %>

@@ -1,0 +1,14 @@
+<div id="movie_collapsed_<%= movie_list_collapsed.id %>" class="movie_list_sub"<%= ' style="display: none;"' unless show -%>>
+<img src="<%= movie_list_collapsed.image_url_small %>" alt="<%= movie_list_collapsed.title %>" />
+<h2 class="movie_list_sub"><%= link_to_remote  movie_list_collapsed.title,
+                        :update => "movie_collapsed_" + movie_list_collapsed.id.to_s,
+                        :before => visual_effect(:blind_up, "movie_collapsed_" + movie_list_collapsed.id.to_s),
+                        :complete => visual_effect(:blind_down, "movie_expanded_" + movie_list_collapsed.id.to_s), 
+                        :url => {:controller => "browse", :action => "expand", :id => movie_list_collapsed.id},
+                        :position => "after" %></h2>
+<% unless i_own_this(movie_list_collapsed) %>
+<p><%= link_to "Borrow this movie", :controller => "borrow", :id => movie_list_collapsed.id %> | <%= link_to "I own this movie", :controller => "share", :action => "add", :id => movie_list_collapsed.id -%></p>
+<% else %>
+<p>(You own this movie)</p>
+<% end %>
+</div>

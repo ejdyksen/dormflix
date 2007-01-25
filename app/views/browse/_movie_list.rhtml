@@ -1,0 +1,4 @@
+<% unless i_own_this(movie_list) && false %>
+<div class="movie_list">
+<%= render(:partial => "movie_list_collapsed", :object => movie_list, :locals => {:show => true} ) -%>
+</div><% end %>

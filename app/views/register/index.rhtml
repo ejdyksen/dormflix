@@ -1,0 +1,50 @@
+<% unless @sucess %>
+<h1>Register for Dormflix</h1>
+<div id="container">
+  <%= error_messages_for "user" %>
+  <% form_for :user, :url => { :action => :index } do |form| %>
+  <fieldset>
+    <legend>Logon information</legend>
+    <div class="fm-req">
+      <label for="user_email">Email</label>
+      <%= form.text_field "email" %>
+    </div>
+    <div class="fm-req">
+      <label for="user_email_confirmation">Confirm email</label>
+      <%= form.text_field "email_confirmation" %>
+    </div>
+    <div class="fm-req">
+      <label for="user_password">Password</label>
+      <%= form.password_field "password" %>
+    </div>
+    <div class="fm-req">
+      <label for="user_password_confirmation">Confirm password</label>
+      <%= form.password_field "password_confirmation" %>
+    </div>
+  </fieldset>    
+  <fieldset>
+    <legend>Contact information</legend>
+    <div class="fm-req">
+      <label for="user_first_name">First Name</label>
+      <%= form.text_field "first_name" %>
+    </div>
+    <div class="fm-req">
+      <label for="user_last_name">Last Name</label>
+      <%= form.text_field "last_name" %>
+    </div>
+    <div>
+      <label for="user_im_addr">IM Address</label>
+      <%= form.text_field "im_addr" %>
+    </div>
+  </fieldset>
+  <div id="form-submit" class="fm-req">
+    <%= submit_tag "Next step" %></div>
+  </div>
+<% end %>
+</div>
+<% else %>
+<h1>Success!</h1>
+<p>Your account was created sucessfully.</p>
+<p>Before you can start using dormflix, please check your email at <strong><%= @user.email %></strong> for instructions on how to verify your account.</p>
+<p>Because email doesn't work yet, your verification key is <%= @user.verification_key %></p>
+<% end %>

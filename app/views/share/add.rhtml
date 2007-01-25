@@ -1,0 +1,16 @@
+<h1>Share movies</h1>
+<p>This page searches the Amazon.com database for videos to add to our database.</p>
+<% form_tag('javascript:void(0)') do %>
+<p><%= text_field_tag 'search', @search %></p>
+
+<%= observe_field :search,                      
+                  :frequency => 3,            
+                  :before    => "Element.show('spinner');Element.hide('results')",  
+                  :complete  => "Element.hide('spinner');Element.show('results')",  
+                  :update    => "results", 
+                  :url       => {:action => "amazon_search", :only_path => false},  
+                  :with      => "'search=' + encodeURIComponent(value)" %> 
+<% end %>
+<%= image_tag "loading.gif", :id => "spinner", :style => "display: none; margin: 100px 0px 0px 300px;" %>
+<div id="results">
+</div>                         

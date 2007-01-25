@@ -1,0 +1,8 @@
+<h1><%= @user.full_name %></h1>
+<% if @user.id == session[:user_id] %>
+<p><em><strong>This is you</strong></em></p>
+<% end %>
+<p><%= @user.email %></p>
+
+<h2><%= @user.first_name %>'s movies</h2>
+<%= render(:partial => "browse/movie_list", :collection => @user.movies) %>
